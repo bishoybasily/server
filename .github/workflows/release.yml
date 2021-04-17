@@ -4,8 +4,8 @@
 name: Release
 
 on:
-  release:
-    types: [ published ]
+  push:
+    branches: [ master ]
 
 jobs:
   build:
@@ -31,5 +31,5 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - run: |
-          docker tag server:latest ${{ secrets.DOCKER_USERNAME }}/server:${{ github.ref }}
-          docker push ${{ secrets.DOCKER_USERNAME }}/server:${{ github.ref }}
+          docker tag server:latest ${{ secrets.DOCKER_USERNAME }}/server:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/server:latest
