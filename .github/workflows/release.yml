@@ -21,8 +21,8 @@ jobs:
         with:
           java-version: 11
 
-      - name: Build with Maven
-        run: mvn clean spring-boot:build-image --batch-mode --no-transfer-progress --file pom.xml
+      #      - name: Build with Maven
+      #        run: mvn clean spring-boot:build-image --batch-mode --no-transfer-progress --file pom.xml
 
       - uses: azure/docker-login@v1
         with:
@@ -30,6 +30,8 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
+      #      - run: |
+      #          docker tag docker.io/library/server:1.0 ${{ secrets.DOCKER_USERNAME }}/server:1.0
+      #          docker push ${{ secrets.DOCKER_USERNAME }}/server:1.0
       - run: |
-          docker tag docker.io/library/server:1.0 ${{ secrets.DOCKER_USERNAME }}/server:1.0
-          docker push ${{ secrets.DOCKER_USERNAME }}/server:1.0
+          docker login
