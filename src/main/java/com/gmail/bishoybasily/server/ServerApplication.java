@@ -38,16 +38,16 @@ public class ServerApplication implements WebMvcConfigurer {
     }
 
     @Bean
-    public SpringTemplateEngine templateEngine(ITemplateResolver resolver) {
+    public ISpringTemplateEngine templateEngine(ITemplateResolver templateResolver) {
         SpringTemplateEngine engine = new SpringTemplateEngine();
-        engine.setTemplateResolver(resolver);
+        engine.setTemplateResolver(templateResolver);
         return engine;
     }
 
     @Bean
-    public ViewResolver viewResolver(ISpringTemplateEngine engine) {
+    public ViewResolver viewResolver(ISpringTemplateEngine templateEngine) {
         ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-        resolver.setTemplateEngine(engine);
+        resolver.setTemplateEngine(templateEngine);
         return resolver;
     }
 
