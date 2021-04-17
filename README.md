@@ -2,7 +2,6 @@
 
 ### Usage
 
-Sample Dockerfile to containerize an angular application
 
 ```dockerfile
 #############
@@ -22,14 +21,14 @@ FROM bishoybasily/server:1.0
 COPY --from=builder /workspace/target/ /web/content/
 ```
 
-Now to build this image, copy the above file into your application root director and make sure that docker is installed
+Copy the above `Dockerfile` file into your application root directory and make sure that docker is installed and running
 then run,
 
 ```shell
 docker build -t my-angular-application:1.0 .
 ```
 
-to build an image from your application with name `my-angular-application` and tag `1.0`, this sever by default uses &
+to build an image from your application with name `my-angular-application` and tag `1.0`. this sever by default uses &
 exposes port `80`.
 
 Now you can run the application by running,

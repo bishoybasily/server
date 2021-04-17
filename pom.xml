@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.gmail.bishoybasily</groupId>
 	<artifactId>server</artifactId>
-	<version>1.0</version>
+	<version>BUILD</version>
 	<name>server</name>
 	<description>HTML5 Routing Server</description>
 	<properties>
