@@ -17,7 +17,7 @@ RUN npx ng build -c ${configuration} --output-path=target
 ###############
 ### package ###
 ###############
-FROM bishoybasily/server:1.0
+FROM bishoybasily/server:latest
 COPY --from=builder /workspace/target/ /web/content/
 ```
 
