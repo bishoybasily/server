@@ -1,7 +1,8 @@
 # Java Server for HTML5 Routing
 
-### Usage
+![example workflow](https://github.com/bishoybasily/server/actions/workflows/release.yml/badge.svg)
 
+### Usage
 
 ```dockerfile
 #############
