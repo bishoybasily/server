@@ -13,13 +13,13 @@ WORKDIR /workspace
 COPY . /workspace
 RUN npm install
 ARG configuration=''
-RUN npx ng build -c ${configuration} --output-path=target
+RUN npx ng build -c ${configuration} --output-path=dist
 
 ###############
 ### package ###
 ###############
 FROM bishoybasily/server:latest
-COPY --from=builder /workspace/target/ /web/content/
+COPY --from=builder /workspace/dist/ /web/content/
 ```
 
 Copy the above `Dockerfile` file into your application root directory and make sure that docker is installed and running
@@ -39,3 +39,11 @@ docker run --rm -p 8080:80 my-angular-application:1.0
 ```
 
 finally, access it from your browser [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
+
+### Configuration
+
+##### Environment variables
+
+* `WEB_CONTENT_PATH` sets the directory for web application content, default value is `/web/content/`
+* `WEB_CONTENT_FILES_EXTENSION` sets the file's extension value, default value is `.html`
+
