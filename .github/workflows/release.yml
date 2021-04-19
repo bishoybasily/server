@@ -36,4 +36,5 @@ jobs:
       - run: |
           docker tag docker.io/library/server docker.io/${{ secrets.DOCKER_USERNAME }}/server:latest
           docker tag docker.io/library/server docker.io/${{ secrets.DOCKER_USERNAME }}/server:${{ steps.vars.outputs.tag }}
-          docker push ${{ secrets.DOCKER_USERNAME }}/server
+          docker push ${{ secrets.DOCKER_USERNAME }}/server:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/server:${{ steps.vars.outputs.tag }}
