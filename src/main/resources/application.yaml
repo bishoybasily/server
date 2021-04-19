@@ -2,5 +2,5 @@ server:
   port: ${PORT:80}
 spring:
   thymeleaf:
-    prefix: ${WEB_CONTENT:/web/content}
-    suffix: ${FILES_EXTENSION:.html}
+    prefix: ${WEB_CONTENT_PATH:/web/content/}
+    suffix: ${WEB_CONTENT_FILES_EXTENSION:.html}
