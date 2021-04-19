@@ -2,6 +2,7 @@ package com.gmail.bishoybasily.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.thymeleaf.ThymeleafProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,21 +20,25 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 @SpringBootApplication
 public class ServerApplication implements WebMvcConfigurer {
 
-    private final String webContentPath = "/web/content/";
+    private final ThymeleafProperties thymeleafProperties;
+
+    public ServerApplication(ThymeleafProperties thymeleafProperties) {
+        this.thymeleafProperties = thymeleafProperties;
+    }
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
         registry
                 .addResourceHandler("/**")
-                .addResourceLocations(String.format("file:///%s", webContentPath))
+                .addResourceLocations(String.format("file:///%s", thymeleafProperties.getPrefix()))
                 .setCachePeriod(0);
     }
 
     @Bean
     public ITemplateResolver templateResolver() {
         AbstractConfigurableTemplateResolver resolver = new FileTemplateResolver();
-        resolver.setPrefix(webContentPath);
-        resolver.setSuffix(".html");
+        resolver.setPrefix(thymeleafProperties.getPrefix());
+        resolver.setSuffix(thymeleafProperties.getSuffix());
         return resolver;
     }
 
