@@ -1,5 +1,5 @@
 server:
-  port: ${PORT:80}
+  port: ${PORT:8080}
 spring:
   thymeleaf:
     prefix: ${WEB_CONTENT_PATH:/web/content/}

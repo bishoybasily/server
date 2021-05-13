@@ -35,7 +35,7 @@ exposes port `80`.
 Now you can run the application by running,
 
 ```shell
-docker run --rm -p 8080:80 my-angular-application:1.0
+docker run --rm -p 8080:8080 my-angular-application:1.0
 ```
 
 finally, access it from your browser [http://127.0.0.1:8080/](http://127.0.0.1:8080/)
